@@ -1,24 +1,13 @@
 # README
+![質問Bot]
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h2 align="center">質問Bot</h2>
 
-Things you may want to cover:
+## 🌐 LINE ID
+### **@983hplib**
 
-* Ruby version
 
-* System dependencies
+## アプリについて
+「アンケート」とメッセージを送ると、用意した質問に答える事ができる
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
