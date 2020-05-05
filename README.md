@@ -1,5 +1,5 @@
 # README
-![質問Bot]
+# 質問Bot
 
 <h2 align="center">質問Bot</h2>
 
