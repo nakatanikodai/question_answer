@@ -39,28 +39,64 @@ class LinebotController < ApplicationController
 
   private
 
-  def template
-    {
-      "type": "template",
-      "altText": "this is a confirm template",
-      "template": {
-          "type": "confirm",
-          "text": "カレーライスはお好きですか？",
-          "actions": [
-              {
-                "type": "message",
-                # Botから送られてきたメッセージに表示される文字列です。
-                "label": "好き",
-                # ボタンを押した時にBotに送られる文字列です。
-                "text": "好き"
-              },
-              {
-                "type": "message",
-                "label": "嫌い",
-                "text": "嫌い"
-              }
-          ]
-      }
+
+  {
+    "type": "template",
+    "altText": "This is a buttons template",
+    "template": {
+        "type": "buttons",
+        "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+        "imageAspectRatio": "rectangle",
+        "imageSize": "cover",
+        "imageBackgroundColor": "#FFFFFF",
+        "title": "Menu",
+        "text": "Please select",
+        "defaultAction": {
+            "type": "uri",
+            "label": "View detail",
+            "uri": "http://example.com/page/123"
+        },
+        "actions": [
+            {
+              "type": "postback",
+              "label": "Buy",
+              "data": "action=buy&itemid=123"
+            },
+            {
+              "type": "postback",
+              "label": "Add to cart",
+              "data": "action=add&itemid=123"
+            },
+            {
+              "type": "uri",
+              "label": "View detail",
+              "uri": "http://example.com/page/123"
+            }
+        ]
     }
-  end
+  }
+  #def template
+  #  {
+  #    "type": "template",
+  #    "altText": "this is a confirm template",
+  #    "template": {
+  #        "type": "confirm",
+  #        "text": "カレーライスはお好きですか？",
+  #        "actions": [
+  #            {
+  #              "type": "message",
+  #              # Botから送られてきたメッセージに表示される文字列です。
+  #              "label": "好き",
+  #              # ボタンを押した時にBotに送られる文字列です。
+  #              "text": "好き"
+  #            },
+  #            {
+  #              "type": "message",
+  #              "label": "嫌い",
+  #              "text": "嫌い"
+  #            }
+  #        ]
+  #    }
+  #  }
+  #end
 end
