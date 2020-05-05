@@ -26,9 +26,9 @@ class LinebotController < ApplicationController
         case event.type
         when Line::Bot::Event::MessageType::Text
           # LINEから送られてきたメッセージが「アンケート」と一致するかチェック
-          if event.message['text'].eql?('アンケート')
+          if event.message['text'].eql?('川島永嗣')
             # private内のtemplateメソッドを呼び出します。
-            client.reply_message(event['replyToken'], template)
+            client.reply_message(event['replyToken'], kawashima)
           end
         end
       end
@@ -39,42 +39,74 @@ class LinebotController < ApplicationController
 
   private
 
-  def template
+  def kawashima
     {
       "type": "template",
-      "altText": "This is a buttons template",
-      "template": {
-          "type": "buttons",
-          "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
-          "imageAspectRatio": "rectangle",
-          "imageSize": "cover",
-          "imageBackgroundColor": "#FFFFFF",
-          "title": "Menu",
-          "text": "Please select",
-          "defaultAction": {
-              "type": "uri",
-              "label": "View detail",
-              "uri": "http://example.com/page/123"
-          },
-          "actions": [
-              {
-                "type": "postback",
-                "label": "Buy",
-                "data": "action=buy&itemid=123"
-              },
-              {
-                "type": "postback",
-                "label": "Add to cart",
-                "data": "action=add&itemid=123"
-              },
-              {
+  "altText": "this is a carousel template",
+  "template": {
+      "type": "carousel",
+      "columns": [
+          {
+            "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
+            "imageBackgroundColor": "#FFFFFF",
+            "title": "this is menu",
+            "text": "description",
+            "defaultAction": {
                 "type": "uri",
                 "label": "View detail",
                 "uri": "http://example.com/page/123"
-              }
-          ]
-      }
-    }
+            },
+            "actions": [
+                {
+                    "type": "postback",
+                    "label": "Buy",
+                    "data": "action=buy&itemid=111"
+                },
+                {
+                    "type": "postback",
+                    "label": "Add to cart",
+                    "data": "action=add&itemid=111"
+                },
+                {
+                    "type": "uri",
+                    "label": "View detail",
+                    "uri": "http://example.com/page/111"
+                }
+            ]
+          },
+          {
+            "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+            "imageBackgroundColor": "#000000",
+            "title": "this is menu",
+            "text": "description",
+            "defaultAction": {
+                "type": "uri",
+                "label": "View detail",
+                "uri": "http://example.com/page/222"
+            },
+            "actions": [
+                {
+                    "type": "postback",
+                    "label": "Buy",
+                    "data": "action=buy&itemid=222"
+                },
+                {
+                    "type": "postback",
+                    "label": "Add to cart",
+                    "data": "action=add&itemid=222"
+                },
+                {
+                    "type": "uri",
+                    "label": "View detail",
+                    "uri": "http://example.com/page/222"
+                }
+            ]
+          }
+      ],
+      "imageAspectRatio": "rectangle",
+      "imageSize": "cover"
+  }
+}
   end
 end
 
