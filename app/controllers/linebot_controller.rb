@@ -41,62 +41,55 @@ class LinebotController < ApplicationController
 
   def kawashima
     {
-      "type": "template",
-  "altText": "this is a carousel template",
-  "template": {
-      "type": "carousel",
-      "columns": [
+      "type": "bubble",
+      "styles": {
+        "header": {
+          "backgroundColor": "#ffaaaa"
+        },
+        "body": {
+          "backgroundColor": "#aaffaa"
+        },
+        "footer": {
+          "backgroundColor": "#aaaaff"
+        }
+      },
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
           {
-            "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
-            "imageBackgroundColor": "#FFFFFF",
-            "title": "this is menu",
-            "text": "description",
-            "defaultAction": {
-                "type": "text",
-                "label": "View detail",
-                "uri": "http://example.com/page/123"
-            },
-            "actions": [
-                {
-                    "type": "text"",
-                    "label": "Buy",
-                    "data": "action=buy&itemid=111"
-                }
-            ]
-          },
-          {
-            "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
-            "imageBackgroundColor": "#000000",
-            "title": "this is menu",
-            "text": "description",
-            "defaultAction": {
-                "type": "uri",
-                "label": "View detail",
-                "uri": "http://example.com/page/222"
-            },
-            "actions": [
-                {
-                    "type": "postback",
-                    "label": "Buy",
-                    "data": "action=buy&itemid=222"
-                },
-                {
-                    "type": "postback",
-                    "label": "Add to cart",
-                    "data": "action=add&itemid=222"
-                },
-                {
-                    "type": "uri",
-                    "label": "View detail",
-                    "uri": "http://example.com/page/222"
-                }
-            ]
+            "type": "text",
+            "text": "header"
           }
-      ],
-      "imageAspectRatio": "rectangle",
-      "imageSize": "cover"
-  }
-}
+        ]
+      },
+      "hero": {
+        "type": "image",
+        "url": "https://example.com/flex/images/image.jpg",
+        "size": "full",
+        "aspectRatio": "2:1"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "body"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "footer"
+          }
+        ]
+      }
+    }
   end
 end
 
