@@ -37,24 +37,37 @@ class LinebotController < ApplicationController
     head :ok
   end
 
-  private
+private
 
   def kawashima
     {
       "type": "bubble",
+      "styles": {
+        "header": {
+          "backgroundColor": "#ffaaaa"
+        },
+        "body": {
+          "backgroundColor": "#aaffaa"
+        },
+        "footer": {
+          "backgroundColor": "#aaaaff"
+        }
+      },
       "header": {
         "type": "box",
         "layout": "vertical",
         "contents": [
           {
             "type": "text",
-            "text": "Header text"
+            "text": "header"
           }
         ]
       },
       "hero": {
         "type": "image",
-        "url": "https://example.com/flex/images/image.jpg"
+        "url": "https://example.com/flex/images/image.jpg",
+        "size": "full",
+        "aspectRatio": "2:1"
       },
       "body": {
         "type": "box",
@@ -62,7 +75,7 @@ class LinebotController < ApplicationController
         "contents": [
           {
             "type": "text",
-            "text": "Body text"
+            "text": "body"
           }
         ]
       },
@@ -72,12 +85,9 @@ class LinebotController < ApplicationController
         "contents": [
           {
             "type": "text",
-            "text": "Footer text"
+            "text": "footer"
           }
         ]
-      },
-      "styles": {
-        "comment": "See the example of a bubble style object"
       }
     }
   end
