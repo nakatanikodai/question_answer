@@ -52,25 +52,15 @@ class LinebotController < ApplicationController
             "title": "this is menu",
             "text": "description",
             "defaultAction": {
-                "type": "uri",
+                "type": "text",
                 "label": "View detail",
                 "uri": "http://example.com/page/123"
             },
             "actions": [
                 {
-                    "type": "postback",
+                    "type": "text"",
                     "label": "Buy",
                     "data": "action=buy&itemid=111"
-                },
-                {
-                    "type": "postback",
-                    "label": "Add to cart",
-                    "data": "action=add&itemid=111"
-                },
-                {
-                    "type": "uri",
-                    "label": "View detail",
-                    "uri": "http://example.com/page/111"
                 }
             ]
           },
