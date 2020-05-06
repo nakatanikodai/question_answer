@@ -37,83 +37,59 @@ class LinebotController < ApplicationController
     head :ok
   end
 
-private
+  private
 
-  def kawashima
-    {
-      "type": "bubble",
-      "styles": {
+    def kawashima
+      {
+        "type": "bubble",
+        "styles": {
+          "header": {
+            "backgroundColor": "#ffaaaa"
+          },
+          "body": {
+            "backgroundColor": "#aaffaa"
+          },
+          "footer": {
+            "backgroundColor": "#aaaaff"
+          }
+        },
         "header": {
-          "backgroundColor": "#ffaaaa"
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "header"
+            }
+          ]
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://example.com/flex/images/image.jpg",
+          "size": "full",
+          "aspectRatio": "2:1"
         },
         "body": {
-          "backgroundColor": "#aaffaa"
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "body"
+            }
+          ]
         },
         "footer": {
-          "backgroundColor": "#aaaaff"
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "footer"
+            }
+          ]
         }
-      },
-      "header": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "header"
-          }
-        ]
-      },
-      "hero": {
-        "type": "image",
-        "url": "https://example.com/flex/images/image.jpg",
-        "size": "full",
-        "aspectRatio": "2:1"
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "body"
-          }
-        ]
-      },
-      "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "footer"
-          }
-        ]
       }
-    }
-  end
+    end
+  
 end
-
-#def template
-  #  {
-  #    "type": "template",
-  #    "altText": "this is a confirm template",
-  #    "template": {
-  #        "type": "confirm",
-  #        "text": "カレーライスはお好きですか？",
-  #        "actions": [
-  #            {
-  #              "type": "message",
-  #              # Botから送られてきたメッセージに表示される文字列です。
-  #              "label": "好き",
-  #              # ボタンを押した時にBotに送られる文字列です。
-  #              "text": "好き"
-  #            },
-  #            {
-  #              "type": "message",
-  #              "label": "嫌い",
-  #              "text": "嫌い"
-  #            }
-  #        ]
-  #    }
-  #  }
-  #end
