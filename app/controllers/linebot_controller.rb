@@ -28,68 +28,67 @@ class LinebotController < ApplicationController
           # LINEから送られてきたメッセージが「アンケート」と一致するかチェック
           if event.message['text'].eql?('川島')
             # private内のtemplateメソッドを呼び出します。
-            client.reply_message(event['replyToken'], kawashima)
+            client.reply_message(event['replyToken'], template)
           end
         end
       end
     }
 
-    head :ok
-  end
+      head :ok
+    end
 
   private
 
-    def kawashima
-      {
-        "type": "bubble",
-        "styles": {
-          "header": {
-            "backgroundColor": "#ffaaaa"
-          },
-          "body": {
-            "backgroundColor": "#aaffaa"
-          },
-          "footer": {
-            "backgroundColor": "#aaaaff"
-          }
-        },
+  def template
+    {
+      "type": "bubble",
+      "styles": {
         "header": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "header"
-            }
-          ]
-        },
-        "hero": {
-          "type": "image",
-          "url": "https://example.com/flex/images/image.jpg",
-          "size": "full",
-          "aspectRatio": "2:1"
+          "backgroundColor": "#ffaaaa"
         },
         "body": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "body"
-            }
-          ]
+          "backgroundColor": "#aaffaa"
         },
         "footer": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "footer"
-            }
-          ]
+          "backgroundColor": "#aaaaff"
         }
+      },
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "header"
+          }
+        ]
+      },
+      "hero": {
+        "type": "image",
+        "url": "https://example.com/flex/images/image.jpg",
+        "size": "full",
+        "aspectRatio": "2:1"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "body"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "footer"
+          }
+        ]
       }
-    end
-  
+    }
+  end
 end
