@@ -28,7 +28,7 @@ class LinebotController < ApplicationController
           # LINEから送られてきたメッセージが「アンケート」と一致するかチェック
           if event.message['text'].eql?('アンケート')
             # private内のtemplateメソッドを呼び出します。
-            client.reply_message(event['replyToken'], template)
+            client.reply_message(event['replyToken'], buble)
           end
         end
       end
@@ -39,28 +39,56 @@ class LinebotController < ApplicationController
 
   private
 
-  def template
-    {
-      "type": "template",
-      "altText": "this is a confirm template",
-      "template": {
-          "type": "confirm",
-          "text": "今日のもくもく会は楽しいですか？",
-          "actions": [
-              {
-                "type": "message",
-                # Botから送られてきたメッセージに表示される文字列です。
-                "label": "楽しい",
-                # ボタンを押した時にBotに送られる文字列です。
-                "text": "楽しい"
-              },
-              {
-                "type": "message",
-                "label": "楽しくない",
-                "text": "楽しくない"
-              }
-          ]
-      }
+  def buble
+  {
+  "type": "bubble",
+  "styles": {
+    "header": {
+      "backgroundColor": "#ffaaaa"
+    },
+    "body": {
+      "backgroundColor": "#aaffaa"
+    },
+    "footer": {
+      "backgroundColor": "#aaaaff"
     }
+  },
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "header"
+      }
+    ]
+  },
+  "hero": {
+    "type": "image",
+    "url": "https://example.com/flex/images/image.jpg",
+    "size": "full",
+    "aspectRatio": "2:1"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "body"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "footer"
+      }
+    ]
+  }
+}
   end
 end
