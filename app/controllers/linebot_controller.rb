@@ -28,7 +28,7 @@ class LinebotController < ApplicationController
           # LINEから送られてきたメッセージが「アンケート」と一致するかチェック
           if event.message['text'].eql?('アンケート')
             # private内のtemplateメソッドを呼び出します。
-            client.reply_message(event['replyToken'], buble)
+            client.reply_message(event['replyToken'], bubble)
           end
         end
       end
@@ -39,7 +39,7 @@ class LinebotController < ApplicationController
 
   private
 
-  def buble
+  def bubble
   {
   "type": "bubble",
   "styles": {
