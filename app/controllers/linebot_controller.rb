@@ -46,14 +46,6 @@ class LinebotController < ApplicationController
       "template": {
           "type": "confirm",
           "text": "今日のもくもく会は楽しいですか？",
-          "actions": [
-              {
-                "type": "message",
-                # Botから送られてきたメッセージに表示される文字列です。
-                "label": "楽しい",
-                # ボタンを押した時にBotに送られる文字列です。
-                "text": "楽しい"
-              },
               {
                 "type": "message",
                 "label": "楽しくない",
