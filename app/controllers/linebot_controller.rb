@@ -53,8 +53,8 @@ class LinebotController < ApplicationController
         ]
       },
       "hero": {
-        "type": "image",
-        "url": "https://example.com/flex/images/image.jpg"
+        "type": "text",
+        "text": "hero text"
       },
       "body": {
         "type": "box",
