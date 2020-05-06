@@ -48,13 +48,9 @@ class LinebotController < ApplicationController
         "contents": [
           {
             "type": "text",
-            "text": "Header text"
+            "text": "ポジション：FW"
           }
         ]
-      },
-      "hero": {
-        "type": "text",
-        "text": "hero text"
       },
       "body": {
         "type": "box",
@@ -62,7 +58,7 @@ class LinebotController < ApplicationController
         "contents": [
           {
             "type": "text",
-            "text": "Body text"
+            "text": "身長：185cm/体重：50kg"
           }
         ]
       },
@@ -72,12 +68,9 @@ class LinebotController < ApplicationController
         "contents": [
           {
             "type": "text",
-            "text": "Footer text"
+            "text": "所属チーム：アーセナル"
           }
         ]
-      },
-      "styles": {
-        "comment": "See the example of a bubble style object"
       }
     }
   end
