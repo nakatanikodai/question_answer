@@ -1,6 +1,7 @@
 class LinebotController < ApplicationController
-  require 'line/bot'
+  require 'line/bot'  # gem 'line-bot-api'
 
+  # callbackアクションのCSRFトークン認証を無効
   protect_from_forgery :except => [:callback]
 
   def client
@@ -11,6 +12,9 @@ class LinebotController < ApplicationController
   end
 
   def callback
+
+    # Postモデルの中身をランダムで@postに格納する
+    @post=Post.offset( rand(Post.count) ).first
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
@@ -21,46 +25,34 @@ class LinebotController < ApplicationController
     events = client.parse_events_from(body)
 
     events.each { |event|
+
+      # event.message['text']でLINEで送られてきた文書を取得
+      if event.message['text'].include?("好き")
+        response = "んほぉぉぉぉぉぉ！すきすきすきすきすきすきすきすきぃぃぃぃぃ"
+      elsif event.message["text"].include?("行ってきます")
+        response = "どこいくの？どこいくの？どこいくの？寂しい寂しい寂しい。。。"
+      elsif event.message['text'].include?("おはよう")
+        response = "おはよう。なんで今まで連絡くれなかったの？"
+      elsif event.message['text'].include?("みーくん")
+        response = "みーくん！？" * 50
+      else
+        response = @post.name
+      end
+      #if文でresponseに送るメッセージを格納
+
       case event
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          # LINEから送られてきたメッセージが「アンケート」と一致するかチェック
-          if event.message['text'].eql?('アンケート')
-            # private内のtemplateメソッドを呼び出します。
-            client.reply_message(event['replyToken'], template)
-          end
+          message = {
+            type: 'text',
+            text: response
+          }
+          client.reply_message(event['replyToken'], message)
         end
       end
     }
 
-      head :ok
-    end
-
-  private
-
-  def template
-    {
-      "type": "template",
-      "altText": "this is a confirm template",
-      "template": {
-          "type": "confirm",
-          "text": "カレーはお好きですか？",
-          "actions": [
-              {
-                "type": "message",
-                # Botから送られてきたメッセージに表示される文字列です。
-                "label": "好き",
-                # ボタンを押した時にBotに送られる文字列です。
-                "text": "好き"
-              },
-              {
-                "type": "message",
-                "label": "嫌い",
-                "text": "嫌い"
-              }
-          ]
-      }
-    }
+    head :ok
   end
 end
