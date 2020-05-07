@@ -41,9 +41,26 @@ class LinebotController < ApplicationController
 
   def template
     {
-      {
-        "type": "text",
-        "text": "Hello, world"
+      "type": "template",
+      "altText": "this is a confirm template",
+      "template": {
+          "type": "confirm",
+          "text": "カレーライスはお好きですか？",
+          "actions": [
+              {
+                "type": "message",
+                # Botから送られてきたメッセージに表示される文字列です。
+                "label": "好き",
+                # ボタンを押した時にBotに送られる文字列です。
+                "text": "好き"
+              },
+              {
+                "type": "message",
+                "label": "嫌い",
+                "text": "嫌い"
+              }
+          ]
+      }
     }
   end
 end
