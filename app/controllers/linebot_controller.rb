@@ -45,7 +45,7 @@ class LinebotController < ApplicationController
       "altText": "this is a confirm template",
       "template": {
           "type": "confirm",
-          "text": "カレーライスはお好きですか？",
+          "text": "カレーはお好きですか？",
           "actions": [
               {
                 "type": "message",
